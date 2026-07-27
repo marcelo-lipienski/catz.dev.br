@@ -190,7 +190,15 @@
       });
     }
 
-    const mainEl = document.querySelector('main');
+    function renderContent(html) {
+      const currentMain = document.querySelector('main');
+      if (!currentMain) return;
+      if (html.trim().startsWith('<main')) {
+        currentMain.outerHTML = html;
+      } else {
+        currentMain.innerHTML = html;
+      }
+    }
 
     async function loadRoute(pathname) {
       const cleanPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.slice(0, -1) : pathname;
@@ -198,10 +206,7 @@
         try {
           const res = await fetch('/partials/blog.html');
           if (res.ok) {
-            const html = await res.text();
-            if (mainEl) {
-              mainEl.innerHTML = html;
-            }
+            renderContent(await res.text());
           }
         } catch (err) {
           console.error('Failed to load route:', err);
@@ -210,10 +215,7 @@
         try {
           const res = await fetch('/partials/projects.html');
           if (res.ok) {
-            const html = await res.text();
-            if (mainEl) {
-              mainEl.innerHTML = html;
-            }
+            renderContent(await res.text());
           }
         } catch (err) {
           console.error('Failed to load route:', err);
@@ -223,13 +225,10 @@
         try {
           const res = await fetch(`/partials/blog/${slug}.html`);
           if (res.ok) {
-            const html = await res.text();
-            if (mainEl) {
-              mainEl.innerHTML = html;
-            }
+            renderContent(await res.text());
           } else {
             const resFallback = await fetch('/partials/blog.html');
-            if (resFallback.ok && mainEl) mainEl.innerHTML = await resFallback.text();
+            if (resFallback.ok) renderContent(await resFallback.text());
           }
         } catch (err) {
           console.error('Failed to load blog route:', err);
@@ -239,18 +238,15 @@
         try {
           const res = await fetch(`/partials/projects/${slug}.html`);
           if (res.ok) {
-            const html = await res.text();
-            if (mainEl) {
-              mainEl.innerHTML = html;
-            }
+            renderContent(await res.text());
           } else {
             const resFallback = await fetch('/partials/projects.html');
-            if (resFallback.ok && mainEl) mainEl.innerHTML = await resFallback.text();
+            if (resFallback.ok) renderContent(await resFallback.text());
           }
         } catch (err) {
           console.error('Failed to load project route:', err);
         }
-
+      }
     }
     window.loadRoute = loadRoute;
 
