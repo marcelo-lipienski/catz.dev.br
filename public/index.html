@@ -125,7 +125,7 @@
 <a class="font-headline-md text-headline-md font-bold text-primary" href="/">DevTerminal</a>
 <div class="hidden md:flex items-center gap-6">
 <!-- Navigation Logic: No active tab for a blank template unless specified. All inactive. -->
-<a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors transition-all duration-200 ease-in-out" href="#">Portfolio</a>
+<a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors transition-all duration-200 ease-in-out" href="/projects">Projects</a>
 <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors transition-all duration-200 ease-in-out" href="/blog">Blog</a>
 <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors transition-all duration-200 ease-in-out" href="#">Archive</a>
 <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors transition-all duration-200 ease-in-out" href="#">Notes</a>
@@ -189,6 +189,18 @@
         } catch (err) {
           console.error('Failed to load route:', err);
         }
+      } else if (pathname === '/projects' || pathname === '/projects.html') {
+        try {
+          const res = await fetch('/projects.html');
+          if (res.ok) {
+            const html = await res.text();
+            if (mainEl) {
+              mainEl.innerHTML = html;
+            }
+          }
+        } catch (err) {
+          console.error('Failed to load route:', err);
+        }
       }
     }
 
@@ -196,7 +208,7 @@
       const anchor = e.target.closest('a');
       if (anchor && anchor.getAttribute('href')?.startsWith('/')) {
         const href = anchor.getAttribute('href');
-        if (href === '/blog') {
+        if (href === '/blog' || href === '/projects') {
           e.preventDefault();
           history.pushState(null, '', href);
           loadRoute(href);
