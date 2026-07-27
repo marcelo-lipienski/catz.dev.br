@@ -5,6 +5,9 @@
 - **Platform:** Cloudflare (Workers / Pages)
 - **Language:** TypeScript (`strict: true`)
 - **Runtime:** Cloudflare Edge Runtime (Web Standard APIs)
+- **Content Structure:**
+  - Blog posts: Markdown files located in `./content/posts` (compiled at build time; includes post list and client-side search using build-generated metadata index)
+  - Projects: Markdown files located in `./content/projects` (compiled at build time; includes list and detailed project view)
 
 ---
 
