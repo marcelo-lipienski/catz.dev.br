@@ -102,7 +102,7 @@ function buildProjects() {
     // Generate detailed partial
     const bodyHtml = markdownToHtml(content);
     const tags = Array.isArray(data.tags) ? data.tags : [];
-    const detailHtml = `<main class="max-w-[800px] mx-auto px-margin pt-8 pb-16">
+    const detailHtml = `<main class="max-w-[800px] mx-auto px-margin pt-8 pb-8">
   <div class="mb-8">
     <a href="/projects" class="inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors font-body-md">
       <span class="material-symbols-outlined text-sm">arrow_back</span>
@@ -142,8 +142,8 @@ function buildProjects() {
   const projectItemsHtml = projects.map((p, idx) => {
     const numStr = String(idx + 1).padStart(2, '0');
     const tags = Array.isArray(p.tags) ? p.tags : [];
-    return `<article class="project-list-item py-10 group cursor-pointer border-b border-outline-variant/30 transition-all hover:bg-surface-container-low/40 px-4 -mx-4 rounded-lg" data-href="/projects/${p.slug}">
-<div class="flex flex-col gap-3">
+    return `<article class="project-list-item py-10 group cursor-pointer border-b border-outline-variant/30 transition-all hover:bg-surface-container-low/40 px-4 -mx-4 rounded-lg">
+<a href="/projects/${p.slug}" class="flex flex-col gap-3 block text-inherit no-underline">
 <div class="flex items-center gap-3">
 <span class="font-code-md text-label-caps text-primary uppercase tracking-wider">PROJECT // ${numStr}</span>
 <span class="text-outline-variant">•</span>
@@ -154,7 +154,7 @@ function buildProjects() {
 <div class="flex flex-wrap gap-2 mt-2">
 ${tags.map(t => `<span class="px-2 py-0.5 bg-surface-container-low text-on-secondary-container rounded font-code-md text-[11px] border border-outline-variant/20 uppercase">${t}</span>`).join('')}
 </div>
-</div>
+</a>
 </article>`;
   }).join('\n');
 
@@ -177,21 +177,7 @@ ${tags.map(t => `<span class="px-2 py-0.5 bg-surface-container-low text-on-secon
 <section class="space-y-0">
 ${projectItemsHtml}
 </section>
-</main>
-<script>
-    document.querySelectorAll('.project-list-item').forEach(item => {
-        item.addEventListener('click', (e) => {
-            const href = item.getAttribute('data-href');
-            if (href) {
-                e.preventDefault();
-                history.pushState(null, '', href);
-                if (typeof window.loadRoute === 'function') {
-                    window.loadRoute(href);
-                }
-            }
-        });
-    });
-</script>`;
+</main>`;
 
   fs.writeFileSync(path.join(PARTIALS_DIR, 'projects.html'), projectsListPartialHtml, 'utf-8');
 

@@ -15,8 +15,8 @@
 </div>
 </div>
 <section class="space-y-0">
-<article class="project-list-item py-10 group cursor-pointer border-b border-outline-variant/30 transition-all hover:bg-surface-container-low/40 px-4 -mx-4 rounded-lg" data-href="/projects/halo">
-<div class="flex flex-col gap-3">
+<article class="project-list-item py-10 group cursor-pointer border-b border-outline-variant/30 transition-all hover:bg-surface-container-low/40 px-4 -mx-4 rounded-lg">
+<a href="/projects/halo" class="flex flex-col gap-3 block text-inherit no-underline">
 <div class="flex items-center gap-3">
 <span class="font-code-md text-label-caps text-primary uppercase tracking-wider">PROJECT // 01</span>
 <span class="text-outline-variant">•</span>
@@ -27,21 +27,7 @@
 <div class="flex flex-wrap gap-2 mt-2">
 <span class="px-2 py-0.5 bg-surface-container-low text-on-secondary-container rounded font-code-md text-[11px] border border-outline-variant/20 uppercase">Go</span><span class="px-2 py-0.5 bg-surface-container-low text-on-secondary-container rounded font-code-md text-[11px] border border-outline-variant/20 uppercase">Docker</span><span class="px-2 py-0.5 bg-surface-container-low text-on-secondary-container rounded font-code-md text-[11px] border border-outline-variant/20 uppercase">CLI</span><span class="px-2 py-0.5 bg-surface-container-low text-on-secondary-container rounded font-code-md text-[11px] border border-outline-variant/20 uppercase">DevTools</span>
 </div>
-</div>
+</a>
 </article>
 </section>
 </main>
-<script>
-    document.querySelectorAll('.project-list-item').forEach(item => {
-        item.addEventListener('click', (e) => {
-            const href = item.getAttribute('data-href');
-            if (href) {
-                e.preventDefault();
-                history.pushState(null, '', href);
-                if (typeof window.loadRoute === 'function') {
-                    window.loadRoute(href);
-                }
-            }
-        });
-    });
-</script>
