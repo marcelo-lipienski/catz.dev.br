@@ -202,6 +202,22 @@
         } catch (err) {
           console.error('Failed to load route:', err);
         }
+      } else if (cleanPath.startsWith('/blog/')) {
+        const slug = cleanPath.replace('/blog/', '').replace('.html', '');
+        try {
+          const res = await fetch(`/partials/blog/${slug}.html`);
+          if (res.ok) {
+            const html = await res.text();
+            if (mainEl) {
+              mainEl.innerHTML = html;
+            }
+          } else {
+            const resFallback = await fetch('/partials/blog.html');
+            if (resFallback.ok && mainEl) mainEl.innerHTML = await resFallback.text();
+          }
+        } catch (err) {
+          console.error('Failed to load blog route:', err);
+        }
       } else if (cleanPath.startsWith('/projects/')) {
         const slug = cleanPath.replace('/projects/', '').replace('.html', '');
         try {
