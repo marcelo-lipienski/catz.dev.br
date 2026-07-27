@@ -3,14 +3,25 @@
 ## Project Overview
 - **Type:** Personal website & developer portfolio
 - **Platform:** Cloudflare (Workers / Pages)
-- **Frontend Framework:** Astro (SSG/SSR, zero JS by default, native Cloudflare Pages integration)
-- **Language:** TypeScript (`strict: true`)
+- **Frontend Framework:** Custom SSG static build script (`scripts/build-content.mjs`) + Vanilla HTML/JS shell + Cloudflare Worker SPA asset router (`src/index.ts`)
+- **Language:** TypeScript (`strict: true`) for Worker & Node.js ESM for build scripts
 - **Runtime:** Cloudflare Edge Runtime (Web Standard APIs)
 - **Content Structure:**
-  - Blog posts: Markdown files located in `./content/posts` (compiled at build time; includes post list and client-side search using build-generated metadata index)
-  - Projects: Markdown files located in `./content/projects` (compiled at build time; includes list and detailed project view)
+  - Blog posts: Markdown files located in `./content/posts` (compiled at build time to `./public/partials/blog/`)
+  - Projects: Markdown files located in `./content/projects` (compiled at build time to `./public/partials/projects/`)
+
+## Architecture & Project Map
+To minimize AI token usage, target files directly using this index:
+- `src/index.ts`: Worker entry point & edge asset routing
+- `src/types.ts`: Central TypeScript definitions & schema interfaces
+- `scripts/build-content.mjs`: Build runner for content compilation
+- `scripts/lib/parser.mjs`: Frontmatter parsing & Markdown-to-HTML converter
+- `scripts/lib/projects.mjs`: Project partial generation logic
+- `scripts/lib/posts.mjs`: Blog post partial generation & shell injection logic
+- `public/index.html`: Main HTML shell layout
 
 ---
+
 
 ## Technical Stack & Constraints
 1. **Runtime Limitations:**
@@ -58,6 +69,8 @@
 - **Minimal Changes:** Modify only the files required to solve the task. Do not rewrite working code unnecessarily.
 - **Verification First:** Always ensure type checks (`tsc --noEmit`) pass before completing a task.
 - **No Speculative Dependencies:** Do not add external npm libraries without explicit instruction if a Web Standard or native Cloudflare API can handle it.
+- **Token Efficiency:** Refer to the Architecture & Project Map to target specific modular files in `scripts/lib/` or `src/types.ts` rather than loading entire directory trees or monolithic files into context.
+
 
 ## Communication & Response Style
 - Response Style: Always adhere to being strictly minimal. Skip preambles, conversational filler, and verbose step-by-step summaries. Focus purely on required code changes, tool calls, and terse execution notes.
