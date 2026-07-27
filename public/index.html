@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta name="description" content="DevTerminal - Personal Website & Developer Portfolio"/>
   <title>Blank Template | DevTerminal</title>
+  <meta name="description" content="DevTerminal - Personal Website & Developer Portfolio"/>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -122,10 +122,12 @@
   <header class="w-full top-0 bg-background border-b border-outline-variant z-50 sticky">
     <nav class="flex justify-between items-center h-16 px-margin max-w-container-max mx-auto">
       <div class="flex items-center gap-8">
-        <a class="font-headline-md text-headline-md font-bold text-primary" href="/">DevTerminal</a>
+        <a id="nav-brand" class="font-headline-md text-headline-md font-bold text-primary" href="#">DevTerminal</a>
         <div class="hidden md:flex items-center gap-6">
-          <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors transition-all duration-200 ease-in-out" href="#">Blog</a>
-          <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors transition-all duration-200 ease-in-out" href="#">Projects</a>
+          <a id="nav-portfolio" class="font-body-md text-body-md text-secondary hover:text-primary transition-colors transition-all duration-200 ease-in-out" href="#">Portfolio</a>
+          <a id="nav-blog" class="font-body-md text-body-md text-secondary hover:text-primary transition-colors transition-all duration-200 ease-in-out" href="#">Blog</a>
+          <a id="nav-archive" class="font-body-md text-body-md text-secondary hover:text-primary transition-colors transition-all duration-200 ease-in-out" href="#">Archive</a>
+          <a id="nav-notes" class="font-body-md text-body-md text-secondary hover:text-primary transition-colors transition-all duration-200 ease-in-out" href="#">Notes</a>
         </div>
       </div>
       <div class="flex items-center gap-4">
@@ -133,7 +135,7 @@
           <span class="material-symbols-outlined text-[18px] mr-2">search</span>
           <span class="text-label-caps font-label-caps opacity-60">Search...</span>
         </div>
-        <button class="bg-primary-container text-on-primary-container px-6 py-2 rounded font-label-caps text-label-caps hover:brightness-110 transition-all duration-200 ease-in-out">
+        <button id="btn-connect" class="bg-primary-container text-on-primary-container px-6 py-2 rounded font-label-caps text-label-caps hover:brightness-110 transition-all duration-200 ease-in-out">
           Connect
         </button>
       </div>
@@ -153,10 +155,10 @@
         <p class="font-label-caps text-label-caps text-secondary opacity-80 transition-opacity hover:opacity-100">© 2024 DevTerminal. Built with precision.</p>
       </div>
       <div class="flex gap-8">
-        <a class="font-label-caps text-label-caps text-secondary hover:text-on-surface transition-colors hover:underline opacity-80 hover:opacity-100 transition-opacity" href="#">RSS</a>
-        <a class="font-label-caps text-label-caps text-secondary hover:text-on-surface transition-colors hover:underline opacity-80 hover:opacity-100 transition-opacity" target="_blank" href="https://github.com/marcelo-lipienski">GitHub</a>
-        <a class="font-label-caps text-label-caps text-secondary hover:text-on-surface transition-colors hover:underline opacity-80 hover:opacity-100 transition-opacity" target="_blank" href="https://linkedin.com/in/mlipienski">LinkedIn</a>
-        <a class="font-label-caps text-label-caps text-secondary hover:text-on-surface transition-colors hover:underline opacity-80 hover:opacity-100 transition-opacity" href="#">Source</a>
+        <a id="footer-rss" class="font-label-caps text-label-caps text-secondary hover:text-on-surface transition-colors hover:underline opacity-80 hover:opacity-100 transition-opacity" href="#">RSS</a>
+        <a id="footer-github" class="font-label-caps text-label-caps text-secondary hover:text-on-surface transition-colors hover:underline opacity-80 hover:opacity-100 transition-opacity" target="_blank" rel="noopener noreferrer" href="https://github.com/marcelo-lipienski">GitHub</a>
+        <a id="footer-linkedin" class="font-label-caps text-label-caps text-secondary hover:text-on-surface transition-colors hover:underline opacity-80 hover:opacity-100 transition-opacity" target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/mlipienski">LinkedIn</a>
+        <a id="footer-source" class="font-label-caps text-label-caps text-secondary hover:text-on-surface transition-colors hover:underline opacity-80 hover:opacity-100 transition-opacity" href="#">Source</a>
       </div>
     </div>
   </footer>
