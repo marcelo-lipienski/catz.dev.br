@@ -18,11 +18,31 @@
 </div>
 <!-- Project List (Using Blog Post Layout Pattern) -->
 <section class="space-y-0">
-<!-- Project Item 1 -->
+<!-- Project Item 1: halo -->
+<article class="project-list-item py-10 group cursor-pointer border-b border-outline-variant/30 transition-all hover:bg-surface-container-low/40 px-4 -mx-4 rounded-lg" data-href="/projects/halo">
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<span class="font-code-md text-label-caps text-primary uppercase tracking-wider">PROJECT // 01</span>
+<span class="text-outline-variant">•</span>
+<span class="font-code-md text-label-caps text-outline uppercase tracking-wider">2026</span>
+</div>
+<h2 class="project-title font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors duration-200">halo</h2>
+<p class="font-body-md text-body-md text-secondary line-clamp-2 max-w-2xl">
+                    Lightweight, blazing-fast CLI tool built to eliminate developer onboarding friction. Analyzes local .env and docker-compose.yml configurations to instantly verify container health, network connectivity, and file permissions.
+                </p>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="px-2 py-0.5 bg-surface-container-low text-on-secondary-container rounded font-code-md text-[11px] border border-outline-variant/20 uppercase">Go</span>
+<span class="px-2 py-0.5 bg-surface-container-low text-on-secondary-container rounded font-code-md text-[11px] border border-outline-variant/20 uppercase">Docker</span>
+<span class="px-2 py-0.5 bg-surface-container-low text-on-secondary-container rounded font-code-md text-[11px] border border-outline-variant/20 uppercase">CLI</span>
+<span class="px-2 py-0.5 bg-surface-container-low text-on-secondary-container rounded font-code-md text-[11px] border border-outline-variant/20 uppercase">DevTools</span>
+</div>
+</div>
+</article>
+<!-- Project Item 2 -->
 <article class="project-list-item py-10 group cursor-pointer border-b border-outline-variant/30 transition-all">
 <div class="flex flex-col gap-3">
 <div class="flex items-center gap-3">
-<span class="font-code-md text-label-caps text-outline uppercase tracking-wider">PROJECT // 01</span>
+<span class="font-code-md text-label-caps text-outline uppercase tracking-wider">PROJECT // 02</span>
 <span class="text-outline-variant">•</span>
 <span class="font-code-md text-label-caps text-outline uppercase tracking-wider">2024</span>
 </div>
@@ -37,11 +57,11 @@
 </div>
 </div>
 </article>
-<!-- Project Item 2 -->
+<!-- Project Item 3 -->
 <article class="project-list-item py-10 group cursor-pointer border-b border-outline-variant/30 transition-all">
 <div class="flex flex-col gap-3">
 <div class="flex items-center gap-3">
-<span class="font-code-md text-label-caps text-outline uppercase tracking-wider">PROJECT // 02</span>
+<span class="font-code-md text-label-caps text-outline uppercase tracking-wider">PROJECT // 03</span>
 <span class="text-outline-variant">•</span>
 <span class="font-code-md text-label-caps text-outline uppercase tracking-wider">2023</span>
 </div>
@@ -56,11 +76,11 @@
 </div>
 </div>
 </article>
-<!-- Project Item 3 -->
+<!-- Project Item 4 -->
 <article class="project-list-item py-10 group cursor-pointer border-b border-outline-variant/30 transition-all">
 <div class="flex flex-col gap-3">
 <div class="flex items-center gap-3">
-<span class="font-code-md text-label-caps text-outline uppercase tracking-wider">PROJECT // 03</span>
+<span class="font-code-md text-label-caps text-outline uppercase tracking-wider">PROJECT // 04</span>
 <span class="text-outline-variant">•</span>
 <span class="font-code-md text-label-caps text-outline uppercase tracking-wider">2023</span>
 </div>
@@ -75,11 +95,11 @@
 </div>
 </div>
 </article>
-<!-- Project Item 4 -->
+<!-- Project Item 5 -->
 <article class="project-list-item py-10 group cursor-pointer border-b border-outline-variant/30 transition-all">
 <div class="flex flex-col gap-3">
 <div class="flex items-center gap-3">
-<span class="font-code-md text-label-caps text-outline uppercase tracking-wider">PROJECT // 04</span>
+<span class="font-code-md text-label-caps text-outline uppercase tracking-wider">PROJECT // 05</span>
 <span class="text-outline-variant">•</span>
 <span class="font-code-md text-label-caps text-outline uppercase tracking-wider">2022</span>
 </div>
@@ -96,11 +116,20 @@
 </section>
 </main>
 <script>
-    // Project item click logging
+    // Project item click navigation
     document.querySelectorAll('.project-list-item').forEach(item => {
-        item.addEventListener('click', () => {
-            const title = item.querySelector('.project-title').textContent.trim();
-            console.log(`Navigating to project: ${title}`);
+        item.addEventListener('click', (e) => {
+            const href = item.getAttribute('data-href');
+            if (href) {
+                e.preventDefault();
+                history.pushState(null, '', href);
+                if (typeof window.loadRoute === 'function') {
+                    window.loadRoute(href);
+                }
+            } else {
+                const title = item.querySelector('.project-title').textContent.trim();
+                console.log(`Navigating to project: ${title}`);
+            }
         });
     });
 </script>
