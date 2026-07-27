@@ -200,7 +200,7 @@ function buildPosts() {
     const tags = Array.isArray(data.tags) ? data.tags : [];
     const detailHtml = `<main class="max-w-[800px] mx-auto px-margin pt-8 pb-16">
   <div class="mb-8">
-    <a href="/blog" class="inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors font-body-md">
+    <a href="/" class="inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors font-body-md">
       <span class="material-symbols-outlined text-sm">arrow_back</span>
       <span>Back to Blog</span>
     </a>
