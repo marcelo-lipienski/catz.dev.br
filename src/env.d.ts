@@ -1,5 +1,3 @@
-export interface Env {
-  ASSETS: {
-    fetch: (request: Request) => Promise<Response>;
-  };
-}
+import type { Env as CentralEnv } from "./types";
+
+export type Env = CentralEnv;
