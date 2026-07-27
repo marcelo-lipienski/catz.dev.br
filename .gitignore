@@ -5,6 +5,4 @@ dist/
 .env
 .env.*
 !.env.example
-public/partials/
-public/search-index.json
 
