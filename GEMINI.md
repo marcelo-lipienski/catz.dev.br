@@ -3,6 +3,7 @@
 ## Project Overview
 - **Type:** Personal website & developer portfolio
 - **Platform:** Cloudflare (Workers / Pages)
+- **Frontend Framework:** Astro (SSG/SSR, zero JS by default, native Cloudflare Pages integration)
 - **Language:** TypeScript (`strict: true`)
 - **Runtime:** Cloudflare Edge Runtime (Web Standard APIs)
 
