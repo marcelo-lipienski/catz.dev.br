@@ -1,0 +1,20 @@
+{
+  "projects": [
+    {
+      "title": "halo",
+      "slug": "halo",
+      "date": "2026-07-18",
+      "year": "2026",
+      "description": "Lightweight, blazing-fast CLI tool built to eliminate developer onboarding friction by analyzing local .env and docker-compose.yml configurations to instantly verify container health, network connectivity, and file permissions.",
+      "tags": [
+        "Go",
+        "Docker",
+        "CLI",
+        "DevTools"
+      ],
+      "repository": "https://github.com/marcelo-lipienski/halo",
+      "license": "MIT"
+    }
+  ],
+  "posts": []
+}

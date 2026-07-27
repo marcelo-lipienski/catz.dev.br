@@ -202,18 +202,51 @@
         } catch (err) {
           console.error('Failed to load route:', err);
         }
+      } else if (cleanPath.startsWith('/blog/')) {
+        const slug = cleanPath.replace('/blog/', '').replace('.html', '');
+        try {
+          const res = await fetch(`/partials/blog/${slug}.html`);
+          if (res.ok) {
+            const html = await res.text();
+            if (mainEl) {
+              mainEl.innerHTML = html;
+            }
+          } else {
+            const resFallback = await fetch('/partials/blog.html');
+            if (resFallback.ok && mainEl) mainEl.innerHTML = await resFallback.text();
+          }
+        } catch (err) {
+          console.error('Failed to load blog route:', err);
+        }
+      } else if (cleanPath.startsWith('/projects/')) {
+        const slug = cleanPath.replace('/projects/', '').replace('.html', '');
+        try {
+          const res = await fetch(`/partials/projects/${slug}.html`);
+          if (res.ok) {
+            const html = await res.text();
+            if (mainEl) {
+              mainEl.innerHTML = html;
+            }
+          } else {
+            const resFallback = await fetch('/partials/projects.html');
+            if (resFallback.ok && mainEl) mainEl.innerHTML = await resFallback.text();
+          }
+        } catch (err) {
+          console.error('Failed to load project route:', err);
+        }
       } else if (cleanPath === '/' || cleanPath === '/index.html') {
         if (mainEl) {
           mainEl.innerHTML = '';
         }
       }
     }
+    window.loadRoute = loadRoute;
 
     document.addEventListener('click', (e) => {
       const anchor = e.target.closest('a');
       if (anchor && anchor.getAttribute('href')?.startsWith('/')) {
         const href = anchor.getAttribute('href');
-        if (href === '/' || href === '/blog' || href === '/projects' || href === '/blog/' || href === '/projects/') {
+        if (href === '/' || href.startsWith('/blog') || href.startsWith('/projects')) {
           e.preventDefault();
           history.pushState(null, '', href);
           loadRoute(href);

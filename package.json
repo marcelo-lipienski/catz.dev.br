@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "wrangler dev",
+    "build:content": "node scripts/build-content.mjs",
+    "dev": "npm run build:content && wrangler dev",
     "check": "tsc --noEmit",
-    "deploy": "wrangler deploy"
+    "deploy": "npm run build:content && wrangler deploy"
   },
   "keywords": [],
   "author": "",
