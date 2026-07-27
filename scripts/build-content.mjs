@@ -270,6 +270,14 @@ ${postItemsHtml || '<p class="text-secondary py-8">No blog posts found.</p>'}
 
   fs.writeFileSync(path.join(PARTIALS_DIR, 'blog.html'), blogListPartialHtml, 'utf-8');
 
+  // Inject blog list into index.html main element for SSG initial load
+  const indexHtmlPath = path.join(PUBLIC_DIR, 'index.html');
+  if (fs.existsSync(indexHtmlPath)) {
+    let indexHtml = fs.readFileSync(indexHtmlPath, 'utf-8');
+    indexHtml = indexHtml.replace(/<main[\s\S]*?<\/main>/, blogListPartialHtml);
+    fs.writeFileSync(indexHtmlPath, indexHtml, 'utf-8');
+  }
+
   return posts;
 }
 
