@@ -1,0 +1,111 @@
+<main class="max-w-[800px] mx-auto px-margin pt-8 pb-8">
+<!-- Hero Section -->
+<header class="mb-16">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-4">Engineering Blog</h1>
+<p class="font-body-lg text-body-lg text-secondary max-w-xl leading-relaxed">
+                Thoughts on distributed systems, CLI tool design, and software craftsmanship.
+            </p>
+</header>
+<!-- Search & Filter (Technical Addition) -->
+<div class="flex items-center justify-between mb-12 py-4 border-y border-outline-variant/30">
+<div class="flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 font-body-md text-body-md placeholder:text-outline p-0 w-32 md:w-64" placeholder="Search posts..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-label-caps text-label-caps text-outline uppercase">Sorted by Date</span>
+</div>
+</div>
+<!-- Post List -->
+<div class="space-y-0">
+<!-- Post 1 -->
+<article class="blog-list-item py-10 group cursor-pointer border-b border-outline-variant/30 transition-all">
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<time class="font-code-md text-label-caps text-outline uppercase tracking-wider" datetime="2024-10-12">Oct 12, 2024</time>
+<span class="text-outline-variant">•</span>
+<span class="font-code-md text-label-caps text-outline uppercase tracking-wider">8 min read</span>
+</div>
+<h2 class="blog-title font-headline-md text-headline-md text-on-surface transition-colors duration-200">Architecting Resilient Event Loops in High-Concurrency Rust</h2>
+<p class="font-body-md text-body-md text-secondary line-clamp-2 max-w-2xl">
+                        Exploring the implementation details of thread-safe event emitters and the nuances of async runtime selection for low-latency networking stacks.
+                    </p>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="px-2 py-0.5 bg-surface-container-low text-on-secondary-container rounded font-code-md text-[11px] border border-outline-variant/20 uppercase">Rust</span>
+<span class="px-2 py-0.5 bg-surface-container-low text-on-secondary-container rounded font-code-md text-[11px] border border-outline-variant/20 uppercase">Architecture</span>
+<span class="px-2 py-0.5 bg-surface-container-low text-on-secondary-container rounded font-code-md text-[11px] border border-outline-variant/20 uppercase">Systems</span>
+</div>
+</div>
+</article>
+<!-- Post 2 -->
+<article class="blog-list-item py-10 group cursor-pointer border-b border-outline-variant/30 transition-all">
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<time class="font-code-md text-label-caps text-outline uppercase tracking-wider" datetime="2024-09-28">Sep 28, 2024</time>
+<span class="text-outline-variant">•</span>
+<span class="font-code-md text-label-caps text-outline uppercase tracking-wider">5 min read</span>
+</div>
+<h2 class="blog-title font-headline-md text-headline-md text-on-surface transition-colors duration-200">The CLI Paradigm: Building Tools Users Actually Love</h2>
+<p class="font-body-md text-body-md text-secondary line-clamp-2 max-w-2xl">
+                        Why the terminal is the ultimate developer interface and how to apply human-centric design principles to command-line flag structures.
+                    </p>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="px-2 py-0.5 bg-surface-container-low text-on-secondary-container rounded font-code-md text-[11px] border border-outline-variant/20 uppercase">UX</span>
+<span class="px-2 py-0.5 bg-surface-container-low text-on-secondary-container rounded font-code-md text-[11px] border border-outline-variant/20 uppercase">Tooling</span>
+</div>
+</div>
+</article>
+<!-- Post 3 -->
+<article class="blog-list-item py-10 group cursor-pointer border-b border-outline-variant/30 transition-all">
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<time class="font-code-md text-label-caps text-outline uppercase tracking-wider" datetime="2024-09-15">Sep 15, 2024</time>
+<span class="text-outline-variant">•</span>
+<span class="font-code-md text-label-caps text-outline uppercase tracking-wider">12 min read</span>
+</div>
+<h2 class="blog-title font-headline-md text-headline-md text-on-surface transition-colors duration-200">Distributed Consensus: When Paxos Isn't Enough</h2>
+<p class="font-body-md text-body-md text-secondary line-clamp-2 max-w-2xl">
+                        A deep dive into Raft variants and the trade-offs of partial synchrony in large-scale cluster orchestration across multiple availability zones.
+                    </p>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="px-2 py-0.5 bg-surface-container-low text-on-secondary-container rounded font-code-md text-[11px] border border-outline-variant/20 uppercase">Distributed Systems</span>
+<span class="px-2 py-0.5 bg-surface-container-low text-on-secondary-container rounded font-code-md text-[11px] border border-outline-variant/20 uppercase">Networking</span>
+</div>
+</div>
+</article>
+<!-- Post 4 -->
+<article class="blog-list-item py-10 group cursor-pointer border-b border-outline-variant/30 transition-all">
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<time class="font-code-md text-label-caps text-outline uppercase tracking-wider" datetime="2024-08-30">Aug 30, 2024</time>
+<span class="text-outline-variant">•</span>
+<span class="font-code-md text-label-caps text-outline uppercase tracking-wider">4 min read</span>
+</div>
+<h2 class="blog-title font-headline-md text-headline-md text-on-surface transition-colors duration-200">Refactoring for Testability: The Dependency Injection Myth</h2>
+<p class="font-body-md text-body-md text-secondary line-clamp-2 max-w-2xl">
+                        Challenge the status quo of boilerplate-heavy DI frameworks and embrace functional composition for cleaner, more testable module boundaries.
+                    </p>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="px-2 py-0.5 bg-surface-container-low text-on-secondary-container rounded font-code-md text-[11px] border border-outline-variant/20 uppercase">Testing</span>
+<span class="px-2 py-0.5 bg-surface-container-low text-on-secondary-container rounded font-code-md text-[11px] border border-outline-variant/20 uppercase">Craftsmanship</span>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="mt-20 flex items-center justify-center gap-4">
+<button class="flex items-center gap-2 px-4 py-2 border border-outline-variant rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container transition-all opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined">arrow_back</span>
+<span class="font-label-caps text-label-caps">Previous</span>
+</button>
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 flex items-center justify-center bg-primary text-on-primary rounded-lg font-code-md text-sm">1</span>
+<button class="w-8 h-8 flex items-center justify-center text-secondary hover:bg-surface-container rounded-lg font-code-md text-sm transition-colors">2</button>
+<button class="w-8 h-8 flex items-center justify-center text-secondary hover:bg-surface-container rounded-lg font-code-md text-sm transition-colors">3</button>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 border border-outline-variant rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container transition-all">
+<span class="font-label-caps text-label-caps">Next</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</main>
