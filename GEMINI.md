@@ -3,8 +3,12 @@
 ## Project Overview
 - **Type:** Personal website & developer portfolio
 - **Platform:** Cloudflare (Workers / Pages)
+- **Frontend Framework:** Astro (SSG/SSR, zero JS by default, native Cloudflare Pages integration)
 - **Language:** TypeScript (`strict: true`)
 - **Runtime:** Cloudflare Edge Runtime (Web Standard APIs)
+- **Content Structure:**
+  - Blog posts: Markdown files located in `./content/posts` (compiled at build time; includes post list and client-side search using build-generated metadata index)
+  - Projects: Markdown files located in `./content/projects` (compiled at build time; includes list and detailed project view)
 
 ---
 

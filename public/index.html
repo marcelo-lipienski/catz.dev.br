@@ -122,7 +122,7 @@
 <header class="w-full top-0 bg-background border-b border-outline-variant z-50 sticky">
 <nav class="flex justify-between items-center h-16 px-margin max-w-container-max mx-auto">
 <div class="flex items-center gap-8">
-<a class="font-headline-md text-headline-md font-bold text-primary" href="#">DevTerminal</a>
+<a class="font-headline-md text-headline-md font-bold text-primary" href="/">DevTerminal</a>
 <div class="hidden md:flex items-center gap-6">
 <!-- Navigation Logic: No active tab for a blank template unless specified. All inactive. -->
 <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors transition-all duration-200 ease-in-out" href="#">Portfolio</a>
@@ -155,61 +155,60 @@
 </div>
 <div class="flex gap-8">
 <a class="font-label-caps text-label-caps text-secondary hover:text-on-surface transition-colors hover:underline opacity-80 hover:opacity-100 transition-opacity" href="#">RSS</a>
-<a class="font-label-caps text-label-caps text-secondary hover:text-on-surface transition-colors hover:underline opacity-80 hover:opacity-100 transition-opacity" href="#">GitHub</a>
-<a class="font-label-caps text-label-caps text-secondary hover:text-on-surface transition-colors hover:underline opacity-80 hover:opacity-100 transition-opacity" href="#">LinkedIn</a>
+<a class="font-label-caps text-label-caps text-secondary hover:text-on-surface transition-colors hover:underline opacity-80 hover:opacity-100 transition-opacity" target="_blank" rel="noopener noreferrer" href="https://github.com/marcelo-lipienski">GitHub</a>
+<a class="font-label-caps text-label-caps text-secondary hover:text-on-surface transition-colors hover:underline opacity-80 hover:opacity-100 transition-opacity" target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/mlipienski">LinkedIn</a>
 <a class="font-label-caps text-label-caps text-secondary hover:text-on-surface transition-colors hover:underline opacity-80 hover:opacity-100 transition-opacity" href="#">Source</a>
 </div>
 </div>
 </footer>
-  <!-- Micro-interaction for Search Focus & SPA Router -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const searchContainer = document.querySelector('.bg-surface-container-low');
-      if (searchContainer) {
-        searchContainer.addEventListener('mouseenter', () => {
-          searchContainer.classList.add('border-primary/50');
-        });
-        searchContainer.addEventListener('mouseleave', () => {
-          searchContainer.classList.remove('border-primary/50');
-        });
-      }
+<!-- Micro-interaction for Search Focus & SPA Router -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchContainer = document.querySelector('.bg-surface-container-low');
+    if (searchContainer) {
+      searchContainer.addEventListener('mouseenter', () => {
+        searchContainer.classList.add('border-primary/50');
+      });
+      searchContainer.addEventListener('mouseleave', () => {
+        searchContainer.classList.remove('border-primary/50');
+      });
+    }
 
-      const mainEl = document.querySelector('main');
+    const mainEl = document.querySelector('main');
 
-      async function loadRoute(pathname) {
-        if (pathname === '/blog' || pathname === '/blog.html') {
-          try {
-            const res = await fetch('/blog.html');
-            if (res.ok) {
-              const html = await res.text();
-              if (mainEl) {
-                mainEl.innerHTML = html;
-              }
+    async function loadRoute(pathname) {
+      if (pathname === '/blog' || pathname === '/blog.html') {
+        try {
+          const res = await fetch('/blog.html');
+          if (res.ok) {
+            const html = await res.text();
+            if (mainEl) {
+              mainEl.innerHTML = html;
             }
-          } catch (err) {
-            console.error('Failed to load route:', err);
           }
+        } catch (err) {
+          console.error('Failed to load route:', err);
         }
       }
+    }
 
-      document.addEventListener('click', (e) => {
-        const anchor = e.target.closest('a');
-        if (anchor && anchor.getAttribute('href')?.startsWith('/')) {
-          const href = anchor.getAttribute('href');
-          if (href === '/blog') {
-            e.preventDefault();
-            history.pushState(null, '', href);
-            loadRoute(href);
-          }
+    document.addEventListener('click', (e) => {
+      const anchor = e.target.closest('a');
+      if (anchor && anchor.getAttribute('href')?.startsWith('/')) {
+        const href = anchor.getAttribute('href');
+        if (href === '/blog') {
+          e.preventDefault();
+          history.pushState(null, '', href);
+          loadRoute(href);
         }
-      });
+      }
+    });
 
-      window.addEventListener('popstate', () => {
-        loadRoute(location.pathname);
-      });
-
+    window.addEventListener('popstate', () => {
       loadRoute(location.pathname);
     });
-  </script>
-</body>
-</html>
+
+    loadRoute(location.pathname);
+  });
+</script>
+</body></html>
