@@ -16,6 +16,13 @@ export default {
       );
     }
 
+    // For SPA routes like /blog or /projects, fetch root "/" asset so index.html layout is served without redirecting
+    const hasExtension = /\.[a-z0-9]+$/i.test(url.pathname);
+    if (!hasExtension && url.pathname !== "/") {
+      const rootReq = new Request(new URL("/", request.url), request);
+      return env.ASSETS.fetch(rootReq);
+    }
+
     return env.ASSETS.fetch(request);
   },
 };

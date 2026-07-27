@@ -177,9 +177,10 @@
     const mainEl = document.querySelector('main');
 
     async function loadRoute(pathname) {
-      if (pathname === '/blog' || pathname === '/blog.html') {
+      const cleanPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.slice(0, -1) : pathname;
+      if (cleanPath === '/blog' || cleanPath === '/blog.html') {
         try {
-          const res = await fetch('/blog.html');
+          const res = await fetch('/partials/blog.html');
           if (res.ok) {
             const html = await res.text();
             if (mainEl) {
@@ -189,9 +190,9 @@
         } catch (err) {
           console.error('Failed to load route:', err);
         }
-      } else if (pathname === '/projects' || pathname === '/projects.html') {
+      } else if (cleanPath === '/projects' || cleanPath === '/projects.html') {
         try {
-          const res = await fetch('/projects.html');
+          const res = await fetch('/partials/projects.html');
           if (res.ok) {
             const html = await res.text();
             if (mainEl) {
@@ -200,6 +201,10 @@
           }
         } catch (err) {
           console.error('Failed to load route:', err);
+        }
+      } else if (cleanPath === '/' || cleanPath === '/index.html') {
+        if (mainEl) {
+          mainEl.innerHTML = '';
         }
       }
     }
@@ -208,7 +213,7 @@
       const anchor = e.target.closest('a');
       if (anchor && anchor.getAttribute('href')?.startsWith('/')) {
         const href = anchor.getAttribute('href');
-        if (href === '/blog' || href === '/projects') {
+        if (href === '/' || href === '/blog' || href === '/projects' || href === '/blog/' || href === '/projects/') {
           e.preventDefault();
           history.pushState(null, '', href);
           loadRoute(href);
