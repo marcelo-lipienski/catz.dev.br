@@ -126,7 +126,7 @@
 <div class="hidden md:flex items-center gap-6">
 <!-- Navigation Logic: No active tab for a blank template unless specified. All inactive. -->
 <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors transition-all duration-200 ease-in-out" href="/projects">Projects</a>
-<a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors transition-all duration-200 ease-in-out" href="/blog">Blog</a>
+<a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors transition-all duration-200 ease-in-out" href="/">Blog</a>
 <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors transition-all duration-200 ease-in-out" href="#">Archive</a>
 <a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors transition-all duration-200 ease-in-out" href="#">Notes</a>
 </div>
@@ -178,7 +178,7 @@
 
     async function loadRoute(pathname) {
       const cleanPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.slice(0, -1) : pathname;
-      if (cleanPath === '/blog' || cleanPath === '/blog.html') {
+      if (cleanPath === '/' || cleanPath === '/index.html' || cleanPath === '/blog' || cleanPath === '/blog.html') {
         try {
           const res = await fetch('/partials/blog.html');
           if (res.ok) {
@@ -234,11 +234,7 @@
         } catch (err) {
           console.error('Failed to load project route:', err);
         }
-      } else if (cleanPath === '/' || cleanPath === '/index.html') {
-        if (mainEl) {
-          mainEl.innerHTML = '';
-        }
-      }
+
     }
     window.loadRoute = loadRoute;
 
